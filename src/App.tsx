@@ -1,7 +1,9 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { useEffect } from 'react';
 import { AppLayout } from './layouts/AppLayout';
-import { AuthPage } from './pages/AuthPage';
+import { LoginPage } from './pages/LoginPage';
+import { OnboardingPage } from './pages/OnboardingPage';
+import { SignUpPage } from './pages/SignUpPage';
 import { CreatePage } from './pages/CreatePage';
 import { HomePage } from './pages/HomePage';
 import { NotificationsPage } from './pages/NotificationsPage';
@@ -19,9 +21,12 @@ const App = () => {
 
   return (
     <Routes>
-      <Route path="/login" element={<AuthPage mode="login" />} />
-      <Route path="/register" element={<AuthPage mode="register" />} />
-      <Route path="/" element={<AppLayout />}>
+      <Route path="/" element={<Navigate to="/onboarding" replace />} />
+      <Route path="/onboarding" element={<OnboardingPage />} />
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/signup" element={<SignUpPage />} />
+      <Route path="/register" element={<Navigate to="/signup" replace />} />
+      <Route path="/app" element={<AppLayout />}>
         <Route index element={<HomePage />} />
         <Route path="search" element={<SearchPage />} />
         <Route path="create" element={<CreatePage />} />
@@ -29,7 +34,7 @@ const App = () => {
         <Route path="profile/:username" element={<ProfilePage />} />
         <Route path="settings" element={<SettingsPage />} />
       </Route>
-      <Route path="*" element={<Navigate to="/" replace />} />
+      <Route path="*" element={<Navigate to="/onboarding" replace />} />
     </Routes>
   );
 };
