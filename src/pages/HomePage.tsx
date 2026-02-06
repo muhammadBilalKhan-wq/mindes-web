@@ -1,6 +1,5 @@
-import { PostItem } from '../components/post/PostItem';
-import { MoreMenu } from '../components/ui/MoreMenu';
 import { useInfiniteFeed } from '../hooks/useInfiniteFeed';
+import { PostItem } from '../components/post/PostItem';
 
 export const HomePage = () => {
   const { posts, loading, setSentinel } = useInfiniteFeed();
@@ -8,10 +7,7 @@ export const HomePage = () => {
   return (
     <section>
       <header className="sticky top-0 z-20 border-b border-neutral-200 bg-neutral-50/90 px-4 py-3 backdrop-blur dark:border-neutral-800 dark:bg-neutral-950/90 sm:px-6">
-        <div className="flex items-center justify-between">
-          <h1 className="text-lg font-semibold">Home</h1>
-          <MoreMenu />
-        </div>
+        <h1 className="text-lg font-semibold">Home</h1>
       </header>
       {posts.map((post) => (
         <PostItem key={post.id} post={post} />
