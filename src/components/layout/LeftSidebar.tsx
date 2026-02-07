@@ -2,6 +2,7 @@ import { Moon, Sun } from 'lucide-react';
 import { NavLinkItem } from '../navigation/NavLinkItem';
 import { navItems } from '../navigation/NavItems';
 import { useUIStore } from '../../store/uiStore';
+import { MoreMenu } from '../ui/MoreMenu';
 
 export const LeftSidebar = () => {
   const { isDark, toggleTheme } = useUIStore();
@@ -23,6 +24,10 @@ export const LeftSidebar = () => {
         {isDark ? <Sun size={16} /> : <Moon size={16} />}
         {isDark ? 'Light mode' : 'Dark mode'}
       </button>
+      <div className="mt-4 flex items-center justify-between rounded-xl border border-neutral-200 px-3 py-2 text-sm text-neutral-600 dark:border-neutral-700 dark:text-neutral-200">
+        <span className="font-medium">More</span>
+        <MoreMenu />
+      </div>
     </aside>
   );
 };
